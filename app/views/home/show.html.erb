@@ -1,0 +1,6 @@
+<ul>
+
+    <li>Name    :<%= @user.name%><br></li>
+    <li>Email   :<%= @user.email%><br></li>
+</ul>
+<%= link_to "Apply for drive", applydrive_path(@user.id)%>

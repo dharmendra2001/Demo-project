@@ -1,0 +1,23 @@
+<h1> Cadidate Details</h1>
+
+<%= @show.name%>
+
+<%= form_with model: @show , method: :post,url:update_path(@show.id)  do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.text_field :email%>
+  </div>
+   <div>
+    <%= form.label :inter %><br>
+    <%= form.text_field :inter%>
+  </div>
+
+  <div>
+    <%= form.submit "Update" %>
+  </div>
+<% end %>

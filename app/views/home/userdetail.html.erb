@@ -1,0 +1,12 @@
+
+<h1>Date of drive</h1>
+<%ar=[]%>
+<% @user.each do |i|%>
+  <%unless ar.include? i.date%>
+  <% ar.push(i.date) %> 
+  <%end%>
+<% end %>
+<%ar.shift%>
+<%ar.each do |i|%>
+<%=link_to i,"detail/#{i}" %><br>
+<%end%>

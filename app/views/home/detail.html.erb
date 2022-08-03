@@ -1,7 +1,7 @@
 <br>
 <hr>
 <%@user.each do |user|%>
-<p>Name:<%= link_to user.name%></p><br>
+<p>Name:<%= link_to user.name, admin_path(user.id)%></p><br>
 <hr>
 <%end%>
 

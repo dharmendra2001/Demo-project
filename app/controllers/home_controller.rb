@@ -93,6 +93,20 @@ class HomeController < ApplicationController
     # end
   end
 
+  def admin
+    @admins = Candidate.find(params[:id])
+  end
+
+  def admin2
+    @admins = Candidate.find_by(name: params[:name], email: params[:email])
+    #debugger
+    if @admins.update(inter: params[:inter])
+      redirect_to userdetail_path
+    else 
+      redirect_to admin_path
+    end
+  end
+
 
 
   private

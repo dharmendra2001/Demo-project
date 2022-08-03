@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get "applydrive/:id", to: "home#applydrive", as: "applydrive"
   post "fillform", to: "home#fillform"
   get "show", to: "home#show"
-  #get "admin", to: "home#admin"
+  get "admin/:id", to: "home#admin", as: "admin"
+  post "admin2/:id", to: "home#admin2", as: "admin2"
 end

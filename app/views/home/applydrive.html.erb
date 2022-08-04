@@ -8,6 +8,7 @@
       <h3 class="card-title text-center">Apply for drive</h3>
     </div>
   <div class="card-body">
+    <%=notice%>
 <%= form_with model: @user , method: :post,url:fillform_path  do |form| %>
 
   <div class="form-group mb-2">

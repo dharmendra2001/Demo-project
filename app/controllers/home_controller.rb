@@ -13,8 +13,9 @@ class HomeController < ApplicationController
     if @user.save 
       flash[:notice]="Sign up successfully"
       redirect_to root_path
-    else 
-      render :create_path
+    else
+      flash[:notice]="un successfully"
+      #render :create_path
     end
   end
 
@@ -82,15 +83,19 @@ class HomeController < ApplicationController
   def fillform
     # if params[:name].blank?
     @drive = Candidate.find_by(name: params[:name], email: params[:email], password: params[:password])
-    
-    if @drive.update(date: params[:date])
+  if @drive && @drive.id == session[:candidate_id] && !params[:date].blank?
+    if @drive.update(date: params[:date]) 
 
       redirect_to show_path
     else
-      redirect_to applydrive_path
+      #redirect_to applydrive_path
     end
     #   redirect_to applydrive_path
     # end
+  elsif 
+    flash[:notice]="error"
+    redirect_to applydrive_path(session[:candidate_id])
+  end
   end
 
   def admin
@@ -100,7 +105,8 @@ class HomeController < ApplicationController
   def admin2
     @admins = Candidate.find_by(name: params[:name], email: params[:email])
     #debugger
-    if @admins.update(inter: params[:inter])
+    if @admins.update(inter: params[:inter], first: params[:first],
+      second: params[:second], third: params[:third])
       redirect_to userdetail_path
     else 
       redirect_to admin_path
